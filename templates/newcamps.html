@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>camps</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    
+
+   /* Remove the jumbotron's default bottom margin */ 
+     .jumbotron {
+      margin-bottom: 0;
+      
+ 
+    }
+   
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+    /* Remove the navbar's default rounded borders and increase the bottom margin */ 
+        
+     .navbar {
+      margin-bottom: 50px;
+      border-radius: 0;
+    }
+  
+   .navbar {
+  overflow: hidden;
+  
+  position: fixed;
+ 
+  width: 100%;
+}
+
+    
+
+   .navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+    
+  .main {
+  padding: 16px;
+  margin-top: 30px;
+  
+}
+
+     
+  </style>
+</head>
+<body>
+
+
+<div class="jumbotron">
+  <div class="container text-center">
+    <h1>DONATE BLOOD,SAVE LIFE</h1>      
+    <p>Camps</p>
+  </div>
+</div>
+
+<nav class="navbar navbar-inverse navbar-static-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Logo</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Donor Register</a></li>
+        <li><a href="#">Search</a></li>
+        <li><a href="#">Blood Request</a></li>
+        <li><a href="#">View Request</a></li>
+        <li><a href="#">Camps</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">About Us</a></li>
+      </ul>
+      </div>
+  </div>
+</nav>
+
+
+ <div class="container">    
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">APJEE COLLEGE,COLABA</div>
+        <div class="panel-body"><img src='{{ url_for("static", filename="images/camp1.jpg") }}' class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer"><p>Organised By:Lions Club</p><p>State:Maharashtra</p><p>City:Mumbai</p></div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading">LUCKY COLLEGE OF COMMERCE,SION-(EAST)</div>
+        <div class="panel-body"><img src='{{ url_for("static", filename="images/camp2.jpg") }}' class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer"><p>Organised By:Welfare Society</p><p>State:Maharashtra</p><p>City:Mumbai</p></div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading">INLACKS CLINIC,GHATKOPAR-(EAST)</div>
+        <div class="panel-body"><img src='{{ url_for("static", filename="images/camp3.jpg") }}' class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer"><p>Organised By:Human Welfare Society</p><p>State:Maharashtra</p><p>City:Mumbai</p></div>
+      </div>
+    </div>
+      <div class="container">    
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">CHARITY CROSS HOME,BANDRA-(WEST)</div>
+        <div class="panel-body"><img src='{{ url_for("static", filename="images/camp4new.jpg") }}' class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer"><p>Organised By:Lions Club</p><p>State:Maharashtra</p><p>City:Mumbai</p></div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading">RED CROSS SOCIETY,DADAR-(EAST)</div>
+        <div class="panel-body"><img src='{{ url_for("static", filename="images/camp5.jpg") }}' class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer"><p>Organised By:Nidhi NGO</p><p>State:Maharashtra</p><p>City:Mumbai</p></div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading">GOODWILL SOCIETY,THANE-(WEST)</div>
+        <div class="panel-body"><img src='{{ url_for("static", filename="images/camp6.jpg") }}' class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">
+          <p>Organised By:Suvidha Home</p><p>State:Maharashtra</p><p>City:Mumbai</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</body>
+</html>

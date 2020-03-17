@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>COUNTER</title>
+<link rel="stylesheet" href=""style.css">
+<link rel="stylesheet"
+href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css>
+<script
+  src="https://code.jquery.com/jquery-1.12.4.min.js"
+  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
+
+
+</head>
+  <body>
+        <div class="container counter-section">
+	<div class="row text-center">
+	<div class="col-md-3 counter-box">
+	<i class="fa fa-briefcase"></i>
+	<p class="counter">150</p>
+	<p>Blood Donors</p>
+  	</div>  
+	<div class="col-md-3 counter-box">
+	<div class="icon-box"><i class="fa fa-heartbeat" ></i></div>
+	<p class="counter">590</p>
+	<p>Blood Requests</p>
+	</div>
+	<div class="col-md-3 counter-box">
+	<div class="icon-box"><i class="fa fa-users"></i></div>
+	<p class="counter">100</p>
+	<p>Active Donors</p>
+	</div> 
+	</div>
+	</div>              
+
+
+        <!--------counter-------->
+	    <script src="jquery.counterup.min.js"></script>
+	    <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+	    <script>
+	    jQuery(document).ready(function( $ )
+	    {
+		$('.counter').counterUp({
+   		delay: 10,
+    		time: 1000
+		});
+	    });
+ </body>
+</html>
+

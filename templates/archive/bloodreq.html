@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bloodrequest</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <style>
+    /* Remove the navbar's default rounded borders and increase the bottom margin */ 
+    .navbar {
+      margin-bottom: 50px;
+      border-radius: 0;
+    }
+    
+    /* Remove the jumbotron's default bottom margin */ 
+     .jumbotron {
+      margin-bottom: 0;
+    }
+   
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+  </style>
+
+
+</head>
+</head>
+<body>
+<div class="jumbotron">
+  <div class="container text-center">
+    <h1>DONATE BLOOD,SAVE LIFE</h1>      
+    <p>Blood Request</p>
+  </div>
+</div>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Logo</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li class="active"><a href="dfg2.html">Donor Register</a></li>
+        <li class="active"><a href="searchblood.html">Search</a></li>
+        <li class="active"><a href="bloodreq.html">Blood Request</a></li>
+        <li class="active"><a href="#">View Request</a></li>
+        <li class="active"><a href="camps.html">Camps</a></li>
+        <li class="active"><a href="contactus.html">Contact Us</a></li>
+        <li class="active"><a href="aboutus.html">About Us</a></li>
+      </ul>
+      </div>
+  </div>
+</nav>
+
+<div class="container">
+<div class="vertical-center-row">
+<div align="center">
+  <h2>Request Form</h2>
+</div>
+  <form class="form-horizontal" action="/action_page.php">
+<div class="form-group">
+      <label class="control-label col-sm-2" for="name">Name:</label>
+      <div class="col-sm-10">
+        <input type="name" class="form-control" id="name" placeholder="Enter full name" name="name">
+      </div>
+    </div>
+ <div class="form-group">
+      <label class="control-label col-sm-2" for="gender">Gender:</label>
+      <div class="col-sm-10">
+        <input type="gander" class="form-control" id="gender" placeholder="Enter your gender" name="email">
+      </div>
+    </div>
+ 
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="age">Age:</label>
+      <div class="col-sm-10">
+        <input type="age" class="form-control" id="age" placeholder="Enter your age" name="age">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="mno">Mobile Number:</label>
+      <div class="col-sm-10">
+        <input type="mno" class="form-control" id="mno" placeholder="Enter mobile number" name="email">
+      </div>
+    </div>
+ <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Email:</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+      </div>
+    </div>
+ 
+    
+    <form class="form-inline">
+  <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Select Blood Group</label>
+  <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+    <option selected>Choose...</option>
+    <option value="1">A +VE</option>
+    <option value="2">B +VE</option>
+    <option value="3">A -VE</option>
+    <option value="1">B -VE</option>
+    <option value="2">AB +VE</option>
+    <option value="3">AB -VE</option>
+    <option value="1">O +VE</option>
+    <option value="2">O -VE</option>
+   </select>
+
+  
+  <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Details:</label>
+      <div class="col-sm-10">
+        <input type="details" class="form-control" id="details" placeholder="Specify any details" name="details">
+      </div>
+    </div>
+ 
+ 
+ <div class-"form-group">
+  <label class="control-label col-sm-2 for="date">Till required date:</label>
+    
+<div class="container">
+    <div class="row">
+        <div class='col-sm-6'>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+            });
+        </script>
+    </div>
+</div>
+
+
+
+    
+<div class="container">
+  <div class="vertical-center-row">
+  <div align="center">
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Submit</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          
+        
+        <div class="modal-body">
+          <p>Record Saved</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+</body>
+</html>
