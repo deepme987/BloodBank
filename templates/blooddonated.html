@@ -15,20 +15,12 @@
 <div class="container">
     <div class="vertical-center-row">
         <div align="center">
-            <h2>Modify Details</h2>
+            <h2>Blood Donation details</h2>
         </div>
         <form class="form-horizontal" action="/action_page.php">
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="oldpwd">Old Password:</label>
-                <div class="col-sm-10">
-                    <input type="oldpwd" class="form-control" id="oldpwd" placeholder="Enter old password" name="oldpwd">
-                </div>
-            </div>
-
-
-            <form class="form-inline">
+            <div class="form-group col-md-4">
                 <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Select Blood Group</label>
-                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                <select class="form-control custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
                     <option selected>Choose...</option>
                     <option value="1">Apjee College,Colaba</option>
                     <option value="2">Lucky College,Sion-(East)</option>
@@ -37,39 +29,19 @@
                     <option value="5">Red Cross Society,Dadar-(East)</option>
                     <option value="6">Goodwill Society,Thane-(West)</option>
                 </select>
+            </div>
 
+            <div class="form-group col-md-4">
+                <label for="sel1">Number of Units:</label>
+                <select class="form-control" id="sel1">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
 
-                <div class="form-group">
-                    <label for="sel1">Number of Units:</label>
-                    <select class="form-control" id="sel1">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-
-                    </select>
-                </div>
-    </div>
-
-
-    <div class="form-group">
-        <label class="control-label col-sm-2" for="newpwd">New Password:</label>
-        <div class="col-sm-10">
-            <input type="newpwd" class="form-control" id="newpwd" placeholder="Enter new password" name="newpwd">
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="control-label col-sm-2" for="cpwd">Confirm Password:</label>
-        <div class="col-sm-10">
-            <input type="cpwd" class="form-control" id="cpwd" placeholder="Confirm your password" name="cpwd">
-        </div>
-    </div>
-
-
-    <div class="container">
-        <div class="vertical-center-row">
-            <div align="center">
+                </select>
+            </div>
+            <div class="form-group col-md-4">
                 <!-- Trigger the modal with a button -->
                 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Submit</button>
 
@@ -95,6 +67,10 @@
                     </div>
 
                 </div>
+            </div>
+        </form>
+    </div>
+</div>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>

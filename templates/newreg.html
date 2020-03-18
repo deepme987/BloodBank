@@ -5,25 +5,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
-    /* Remove the navbar's default rounded borders and increase the bottom margin */ 
-    .navbar {
-      margin-bottom: 50px;
-      border-radius: 0;
-    }
-    
-    /* Remove the jumbotron's default bottom margin */ 
-     .jumbotron {
-      margin-bottom: 0;
-    }
-   
-    /* Add a gray background color and some padding to the footer */
-    footer {
-      background-color: #f2f2f2;
-      padding: 25px;
-    }
      * {
     box-sizing: border-box;
 }
@@ -31,8 +17,8 @@
 .bg-img {
     /* The image used */
     background-image: url('{{ url_for("static", filename="images/ser23.jpg") }}');
-    min-height: 380px;
-
+    height: 60vh;
+    width: 95%;
     /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
@@ -136,93 +122,37 @@ input[type=submit] {
 </head>
 </head>
 <body>
-<div class="jumbotron">
-  <div class="container text-center">
-    <h1>DONATE BLOOD,SAVE LIFE</h1>      
-    <p>Donor Register</p>
-  </div>
-</div>
 
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" img src="#" alt="image">Logo</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li class="active"><a href="#">Donor LogIn</a></li>
-        <li class="active"><a href='searchblood'>Search</a></li>
-        <li class="active"><a href='bloodreq'>Blood Request</a></li>
-        <li class="active"><a href="#">View Request</a></li>
-        <li class="active"><a href='camps'>Camps</a></li>
-        <li class="active"><a href="contactus">Contact Us</a></li>
-        <li class="active"><a href="#">About Us</a></li>
-      </ul>
-      </div>
-  </div>
-</nav>
-
+{% include 'layout.html' %}
 
 <div class="bg-img">
     <div class="container1">
-  <form action="/action_page.php" class="container1">
+  <form action="/newreg" class="container1", method="post">
+    {{ form.csrf_token }}
     <h1>Register Now</h1>
 
-     <label for="name"><b>Name</b></label>
-    <input type="text" placeholder="Enter name" name="name" required>
-     
-    <label for="gender"><b>Gender</b></label>
-    <input type="text" placeholder="Enter Gender" name="gender" required>
+    {{ form.name.label }}
+    {{ form.name(placeholder="Enter Name") }}
 
-    <label for="email"><b>Age</b></label>
-    <input type="text" placeholder="Enter Age" name="age" required>
-    
-    <label for="num"><b>Mobile Number</b></label>
-    <input type="text" placeholder="Enter Mobile Number" name="num" required>
+    {{ form.gender.label }}
+    {{ form.gender() }}
 
-   
-    <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>
+    {{ form.age.label }}
+    {{ form.age(placeholder="Age") }}
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
-    
-    <div align="center">
-    <!-- Trigger the modal with a button -->
-  <button type="button" class="button" data-toggle="modal" data-target="#myModal">Send Us</button>
+    {{ form.email.label }}
+    {{ form.email(placeholder="Email") }}
 
-  
+    {{ form.mobile.label }}
+    {{ form.mobile(placeholder="Mobile Number") }}
 
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-          
-        
-        <div class="modal-body">
-          <p>You are registered now !!</p>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-</div>
-</div>
+    {{ form.password.label }}
+    {{ form.password(placeholder="Enter password") }}
+
+    <button type="submit" class="button">Register</button>
   </form>
+    </div>
 </div>
-</div>
-  <div id="message">
-  <h3>Password must contain the following:</h3>
-  <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
-  <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
-  <p id="number" class="invalid">A <b>number</b></p>
-  <p id="length" class="invalid">Minimum <b>8 characters</b></p>
-</div>
-				
 <script>
 var myInput = document.getElementById("psw");
 var letter = document.getElementById("letter");
