@@ -14,42 +14,31 @@
 
 <div class="container">
     <div class="vertical-center-row">
+
+
         <div align="center">
             <h2>Blood Donation details</h2>
         </div>
-        <form class="form-horizontal" action="/action_page.php">
-            <div class="form-group col-md-4">
-                <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Select Blood Group</label>
-                <select class="form-control custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                    <option selected>Choose...</option>
-                    <option value="1">Apjee College,Colaba</option>
-                    <option value="2">Lucky College,Sion-(East)</option>
-                    <option value="3">Inlacks Clinic,Ghatkopar-(East)</option>
-                    <option value="4">Charity Cross Home,Bandra-(West)</option>
-                    <option value="5">Red Cross Society,Dadar-(East)</option>
-                    <option value="6">Goodwill Society,Thane-(West)</option>
-                </select>
-            </div>
+        <form class="form-horizontal" action="/blooddonated", method="POST">
 
-            <div class="form-group col-md-4">
-                <label for="sel1">Number of Units:</label>
-                <select class="form-control" id="sel1">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
+            {{ form.bg.label }}
+            {{ form.bg }}
+            
+            {{ form.NoOfUnits.label }}
+            {{ form.NoOfUnits }}
 
-                </select>
-            </div>
+            <button type="submit">Submit</button>
+            {{ form.csrf_token }}
+        </form>
+
+
+<!--
             <div class="form-group col-md-4">
-                <!-- Trigger the modal with a button -->
                 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Submit</button>
 
-                <!-- Modal -->
                 <div class="modal fade" id="myModal" role="dialog">
                     <div class="modal-dialog">
 
-                        <!-- Modal content-->
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -67,8 +56,8 @@
                     </div>
 
                 </div>
-            </div>
-        </form>
+            </div> 
+        </form> -->
     </div>
 </div>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>

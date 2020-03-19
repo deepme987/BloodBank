@@ -17,20 +17,25 @@
       <div class="row">
         <div class="col-md-12 school-options-dropdown text-center">
           <div class="dropdown btn-group">
-          <form class="form-inline">
+
+          <form class="form-inline" action="/searchblood" method="POST">
             <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Select Blood Group</label>
-            <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-              <option selected>Choose...</option>
-              <option value="1">A+VE</option>
-              <option value="2">B+VE</option>
-              <option value="3">A-VE</option>
-              <option value="4">B-VE</option>
-              <option value="5">AB+VE</option>
-              <option value="6">AB-VE</option>
-              <option value="7">O+VE</option>
-              <option value="8">O-VE</option>
-            </select>
+            
+            <br>
+            {{ form.bg.label }}
+            {{ form.bg }}
+            <br>
+
+            {% if message %}
+            {{ message }}
+            {% endif %}
+
+            <br>
+            <br>
+            <button type="submit">Submit</button>
+            {{ form.csrf_token }}
           </form>
+
           </div>
         </div>
       </div>

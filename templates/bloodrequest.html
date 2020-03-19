@@ -22,66 +22,48 @@
                 <h2>Request Form</h2>
             </div>
 
-            <form class="form-horizontal" action="/action_page.php">
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="name">Name:</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="name" placeholder="Enter full name" name="name">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="gender">Gender:</label>
-                    <div class="col-sm-10">
-                        <input type="gander" class="form-control" id="gender" placeholder="Enter your gender" name="email">
-                    </div>
-                </div>
+            <form class="form-horizontal" action="/bloodrequest" method="POST">
+                
 
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="age">Age:</label>
-                    <div class="col-sm-10">
-                        <input type="number" class="form-control" id="age" placeholder="Enter your age" name="age">
-                    </div>
-                </div>
+                {{ form.name.label }}
+                {{ form.name }}
+                <br>
+                <br>
+                {{ form.gendre.label }}
+                {{ form.gendre }}
+                <br>
+                <br>
+                {{ form.age.label }}
+                {{ form.age }}
+                <br>
+                <br>
+                {{ form.mobile.label }}
+                {{ form.mobile }}
+                <br>
+                <br>
+                {{ form.email.label }}
+                {{ form.email }}
+                <br>
+                <br>
+                {{ form.csrf_token }}
 
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="mno">Mobile Number:</label>
-                    <div class="col-sm-10">
-                        <input type="number" class="form-control" id="mno" placeholder="Enter mobile number" name="email">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="email">Email:</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
-                    </div>
-                </div>
-
-                <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Select Blood Group</label>
-                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                    <option selected>Choose...</option>
-                    <option value="1">A +VE</option>
-                    <option value="2">B +VE</option>
-                    <option value="3">A -VE</option>
-                    <option value="1">B -VE</option>
-                    <option value="2">AB +VE</option>
-                    <option value="3">AB -VE</option>
-                    <option value="1">O +VE</option>
-                    <option value="2">O -VE</option>
-                </select>
+                {% if message %}
+                {{ message }}
+                {% endif %}
 
 
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="email">Details:</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="details" placeholder="Specify any details" name="details">
-                    </div>
-                </div>
 
-
+                <br>
+                <br>
+                <button type="submit" >Submit</button>
+                <br>
+                <br>
+            </form>
+                <!--
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="date">Till required date:</label>
 
+                    
                     <div class="container">
                         <div class="row">
                             <div class='col-sm-6'>
@@ -100,19 +82,16 @@
                                 });
                             </script>
                         </div>
-                    </div>
+                    </div> 
 
                     <div class="container">
                         <div class="vertical-center-row">
                             <div align="center">
-                                <!-- Trigger the modal with a button -->
                                 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Submit</button>
 
-                                <!-- Modal -->
                                 <div class="modal fade" id="myModal" role="dialog">
                                     <div class="modal-dialog">
 
-                                    <!-- Modal content-->
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -132,7 +111,7 @@
                         </div>
                     </div>
                 </div>
-            </form>
+            </form>-->
         </div>
     </div>
 

@@ -19,9 +19,17 @@
 <div class="container">
 <div class="vertical-center-row">
 <div align="center">
-  <h2>Change password</h2>
+  <h2>Change Password</h2>
 </div>
-  <form class="form-horizontal" action="/action_page.php">
+  <form class="form-horizontal" action="/changepwd" method="POST">
+
+    {{ form.old_password.label }}
+    {{ form.old_password }}
+    <br>
+    {{ form.new_password.label }}
+    {{ form.new_password }}
+
+<!--    
 <div class="form-group">
       <label class="control-label col-sm-2" for="oldpwd">Old Password:</label>
       <div class="col-sm-10">
@@ -41,17 +49,35 @@
         <input type="cpwd" class="form-control" id="cpwd" placeholder="Confirm your password" name="cpwd">
       </div>
     </div>
+-->
+
+      {{ form.csrf_token }}
+      <br>
+      <button type="submit">Submit</button>
+
+      <br>
+      {% if error %}
+      {{ error }}
+      {% endif %}
+
+
+      {% if message %}
+      {{ message }}
+      {% endif %}
+  </form>
+
+  
+
+
+<!--
 <div class="container">
   <div class="vertical-center-row">
   <div align="center">
-  <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Submit</button>
+  <button type="submit" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Submit</button>
 
-  <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     
-      <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -69,5 +95,7 @@
   </div>
 
 </div>
+-->
+
 </body>
 </html>
