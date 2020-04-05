@@ -1,4 +1,3 @@
-
 from flask import Flask, render_template, redirect, url_for, request, flash
 from flask_login import LoginManager, login_user, logout_user, login_required, UserMixin, current_user
 from flask_wtf.csrf import CSRFProtect
@@ -7,16 +6,16 @@ from hashlib import sha512
 from bson import ObjectId
 from forms import *
 
-
 try:
-    client = MongoClient("mongodb://localhost:27018/")
+    client = MongoClient("mongodb://localhost:27017/")
     database = client["blood_bank"]
 except errors.ServerSelectionTimeoutError:
     print("Cannot connect to mongo server.")
     exit()
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = "lkajdghdadkglajkgah"
+app.config['SECRET_KEY'] = "lkajdghdadkglajkgah1"
+
 
 csrf = CSRFProtect(app)
 login_manager = LoginManager()
@@ -25,17 +24,18 @@ login_manager.init_app(app)
 
 class User(UserMixin):
     def __init__(self, user):
+        self.user = user
         self.id = user["_id"]
         self.email = user["email"]
         self.name = user["name"]
 
-    def get(self):
-        return self.id
+    def get_id(self):
+        return self.email
 
 
 @login_manager.user_loader
 def load_user(user_id):
-    for user_info in database["user"].find({"_id": ObjectId(user_id)}):
+    for user_info in database["user"].find({"email": user_id}):
         user = User(user_info)
         return user
     return None
@@ -83,7 +83,7 @@ def register():
             database["user"].insert_one(form.data)
             return redirect("/login")
 
-    return render_template("/newreg.html", form=form)
+    return render_template("newreg.html", form=form)
 
 
 @app.route("/blooddonated", methods=["POST", "GET"])
@@ -91,10 +91,19 @@ def register():
 def donate_blood():
     form = BloodDonateForm()
 
-    if(request.method == 'POST'):
-        database["blood_detail"].insert_one(form.data)
-        return redirect('/dfg2')
-    return render_template('blooddonated.html', form = form)
+    if request.method == 'POST':
+        database["blood_detail"].insert_one(form.return_data(current_user.id))
+        flash("Blood donation request successful, kindly visit nearest center to save someone's life")
+        return redirect('/blooddonated')
+    return render_template('blooddonated.html', form=form)
+
+
+@app.route("/view_donations", methods=["POST", "GET"])
+@login_required
+def view_donations():
+    data = database["blood_detail"].find({"id": current_user.id})
+
+    return render_template('view_donations.html', data=data)
 
 
 @app.route("/changepwd", methods=["POST", "GET"])
@@ -103,13 +112,20 @@ def change_password():
     userid = current_user.id
     form = ChangePasswordForm()
 
-    if(request.method == 'POST'):
-        np = { "$set" : {"password": sha512(form.new_password.data.encode()).hexdigest() }}
-        for val in database["user"].find({"_id": userid}, {"_id":0, "password":1}):
-            if ( val["password"] == sha512(form.old_password.data.encode()).hexdigest() ):
+    if form.validate_on_submit():
+        if form.new_password.data != form.confirm_password.data:
+            return render_template("changepwd.html", form=form, error="Password and confirm password don't match")
+
+        np = {"$set": {"password": sha512(form.new_password.data.encode()).hexdigest()}}
+        for val in database["user"].find({"_id": userid}, {"_id": 0, "password": 1}):
+            if val["password"] == sha512(form.old_password.data.encode()).hexdigest():
                 database["user"].update_one(val, np)
-                return render_template('changepwd.html', form=form, message="Password changed successfully")
-    return render_template('changepwd.html', form=form, error = "Some error occured")
+                flash("Password changed successfully")
+                return render_template('changepwd.html', form=form)
+            else:
+                return render_template("changepwd.html", form=form, error="Invalid old password")
+
+    return render_template('changepwd.html', form=form)
 
 
 @app.route("/updatepf", methods=["POST", "GET"])
@@ -118,40 +134,44 @@ def update_profile():
     form = UpdateProfileForm()
     userid = current_user.id
 
-    if(request.method == 'POST'):
-        val2 = { "$set" : {"name":form.name.data, "gender":form.gendre.data, "age":form.age.data, "mobile":form.mobile.data}}
-        for val in database["user"].find({"_id":userid}, {"_id":0, "name":1, "gender":1, "age":1, "mobile":1}):
-            database["user"].update_one(val, val2)
-            return redirect('/updatepf')
-    return render_template('updatepf.html', form = form, message = "Some error occurred")
+    if form.validate_on_submit():
+        val2 = {"$set": {"age": form.age.data, "mobile": form.mobile.data}}
+        database["user"].update_one({"_id": userid}, val2)
+        flash("Updated Successfully")
+        return redirect('/updatepf')
+
+    return render_template('updatepf.html', form=form)
 
 
 @app.route("/logout")
 @login_required
 def logout():
     logout_user()
-    return redirect("/")
+    return redirect("/login")
 
 
 @app.route("/searchblood", methods=["POST", "GET"])
 def searchblood():
     form = SearchBloodForm()
 
-    if(request.method == 'POST'):
-        for val in database["blood_detail"].find({"bg":form.bg.data}, {"_id":0, "NoOfUnits":1}):
-            print(val) #show data in table format & redirect to bloodrequest.html (blood-request-form)
-            return render_template("/searchblood.html", form=form, message = "data found")
-    return render_template("/searchblood.html", form=form, message = "No data found")
+    if form.validate_on_submit():
+        data = database["blood_detail"].find({"bg": form.bg.data})
+        return render_template("searchblood.html", form=form, data=data)
+
+    return render_template("searchblood.html", form=form, message="No data found")
 
 
 @app.route("/bloodrequest", methods=["POST", "GET"])
 def bloodrequest():
     form = BloodRequestForm()
 
-    if(request.method == 'POST'):
-        database["blood_request"].insert_one(form.data)
-        return render_template("/bloodrequest.html", form=form, message = "We will get back to you soon...")
-    return render_template("/bloodrequest.html", form=form, message = "Some error occured")
+    if form.validate_on_submit():
+        database["blood_request"].insert_one(form.return_data())
+        flash("We will get back to you soon.")
+        return render_template("bloodrequest.html", form=form)
+
+    return render_template("bloodrequest.html", form=form)
+
 
 @app.route("/<file>")
 def render_file(file):

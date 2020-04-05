@@ -7,30 +7,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
       <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
-    <style>
-        .button {
-            padding: 15px 25px;
-            font-size: 24px;
-            text-align: center;
-            cursor: pointer;
-            outline: none;
-            color: #fff;
-            background-color: #4CAF50;
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 9px #999;
-        }
-
-    .button:hover {background-color: #3e8e41}
-
-    .button:active {
-      background-color: #3e8e41;
-      box-shadow: 0 5px #666;
-      transform: translateY(4px);
-    }
-
-      </style>
-
 </head>
 <body>
 
@@ -67,20 +43,13 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <div class="checkbox">
-                            <label><input type="checkbox" name="remember"> Remember me</label>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="container">
                     <div class="vertical-center-row">
                         <div align="center">
 
                             <!-- Trigger the modal with a button -->
-                            <button type="button" class="button" data-toggle="modal" data-target="#myModal">Send Us</button>
+
+                            <button class="btn btn-user-account-submit float-right mt-5" type="button" data-toggle="modal" data-target="#myModal">Send Us</button>
 
                             <!-- Modal -->
                             <div class="modal fade" id="myModal" role="dialog">

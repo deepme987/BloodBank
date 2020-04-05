@@ -1,28 +1,69 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>contactus</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+        .button {
+            padding: 15px 25px;
+            font-size: 24px;
+            text-align: center;
+            cursor: pointer;
+            outline: none;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px #999;
+        }
+
+    .button:hover {background-color: #3e8e41}
+
+    .button:active {
+      background-color: #3e8e41;
+      box-shadow: 0 5px #666;
+      transform: translateY(4px);
+    }
+
+      </style>
+
 </head>
 <body>
 
-    <form action="/login" method="POST">
+    {% include 'layout.html' %}
 
-        {{ form.email.label }}
-        {{ form.email }}
-        {{ form.password.label }}
-        {{ form.password }}
+    <div class="container">
+        <div class="vertical-center-row">
+            <div align="center">
 
-        <input type="submit" value="Log in">
-        {{ form.csrf_token }}
-    </form>
+            </div>
+            <form class="form-horizontal" action="" method="post">
+                <div class="form-group">
+                    {{ form.email.label }}
+                    {{ form.email(class_="form-control") }}
+                </div>
+                <div class="form-group">
+                    {{ form.password.label }}
+                    {{ form.password(class_="form-control") }}
+                </div>
 
-    {% if error %}
-        {{ error }}
-    {% endif %}
+                <div class="form-group">
+                    <button class="btn btn-user-account-submit float-right mt-5" type="submit">Login</button>
+                </div>
+                {{ form.hidden_tag() }}
+
+            </form>
+        </div>
+    </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
 
 </body>
 </html>

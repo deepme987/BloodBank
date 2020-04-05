@@ -19,101 +19,65 @@
     <div class="container">
         <div class="vertical-center-row">
             <div align="center">
-                <h2>Request Form</h2>
+                <h2>Blood Request Form</h2>
             </div>
 
-            <form class="form-horizontal" action="/bloodrequest" method="POST">
-                
+            <form class="form-horizontal" action="" method="POST">
 
-                {{ form.name.label }}
-                {{ form.name }}
-                <br>
-                <br>
-                {{ form.gendre.label }}
-                {{ form.gendre }}
-                <br>
-                <br>
-                {{ form.age.label }}
-                {{ form.age }}
-                <br>
-                <br>
-                {{ form.mobile.label }}
-                {{ form.mobile }}
-                <br>
-                <br>
-                {{ form.email.label }}
-                {{ form.email }}
-                <br>
-                <br>
-                {{ form.csrf_token }}
-
-                {% if message %}
-                {{ message }}
-                {% endif %}
-
-
-
-                <br>
-                <br>
-                <button type="submit" >Submit</button>
-                <br>
-                <br>
-            </form>
-                <!--
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="date">Till required date:</label>
-
-                    
-                    <div class="container">
-                        <div class="row">
-                            <div class='col-sm-6'>
-                                <div class="form-group">
-                                    <div class='input-group date' id='datetimepicker1'>
-                                        <input type='text' class="form-control" />
-                                        <span class="input-group-addon">
-                                            <span class="glyphicon glyphicon-calendar"></span>
-                                        </span>
-                                    </div>
+                <div class="row">
+                    <div class="form-group">
+                        {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                                {% for message in messages %}
+                                <div class="alert alert-success mt-4" role="alert">
+                                    {{ message }}
                                 </div>
-                            </div>
-                            <script type="text/javascript">
-                                $(function () {
-                                    $('#datetimepicker1').datetimepicker();
-                                });
-                            </script>
-                        </div>
-                    </div> 
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                    </div>
 
-                    <div class="container">
-                        <div class="vertical-center-row">
-                            <div align="center">
-                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Submit</button>
+                    <div class="form-group">
+                        {{ form.name(class_="form-control", placeholder="Name") }}
+                    </div>
 
-                                <div class="modal fade" id="myModal" role="dialog">
-                                    <div class="modal-dialog">
+                    <div class="form-group">
+                        {{ form.email(class_="form-control", placeholder="Email") }}
+                    </div>
 
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <div class="form-group">
+                        {{ form.gendre.label }}
+                        {{ form.gendre() }}
+                    </div>
 
+                    <div class="form-group">
+                        {{ form.bg.label }}
+                        {{ form.bg(class_="form-control") }}
+                    </div>
 
-                                                <div class="modal-body">
-                                                    <p>Record Saved</p>
-                                                </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                            </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="form-group">
+                        {{ form.age(class_="form-control", placeholder="Age") }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.mobile(class_="form-control", placeholder="Mobile") }}
+                    </div>
+
+                    {% if error %}
+                    <div class="form-group">
+                        <div class="alert alert-danger mt-3" role="alert">
+                            {{ error }}
                         </div>
                     </div>
+                    {% endif %}
+
+                    <div class="form-group">
+                        <button class="btn btn-user-account-submit float-right mt-5" type="submit">Request Blood</button>
+                    </div>
                 </div>
-            </form>-->
+                {{ form.hidden_tag() }}
+            </form>
         </div>
     </div>
-
 </body>
 </html>

@@ -12,16 +12,18 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Logo</a>
+        <a class="navbar-brand" href="/"><img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="" style="margin: -17px"></a>
+
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
+          <li class="active"><a href='/'>Home</a></li>
           <li class="active"><a href='dfg2'>Donor Home</a></li>
           <li class="active"><a href='blooddonated'>Donate Blood</a></li>
-          <li class="active"><a href="#">View Donations</a></li>
+          <li class="active"><a href='view_donations'>View Donations</a></li>
           <li class="active"><a href='changepwd'>Change Password</a></li>
           <li class="active"><a href='updatepf'>Update Profile</a></li>
-        <li class="active"><a href="/">Log Out</a></li>
+        <li class="active"><a href="logout">Log Out</a></li>
 
  </ul>
       </div>
