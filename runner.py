@@ -7,7 +7,8 @@ from bson import ObjectId
 from forms import *
 
 try:
-    client = MongoClient("mongodb://localhost:27017/")
+    client = MongoClient("mongodb+srv://Cassie:Cassie@cassie-kdpcc.mongodb.net/"
+                         "test?retryWrites=true&w=majority")
     database = client["blood_bank"]
 except errors.ServerSelectionTimeoutError:
     print("Cannot connect to mongo server.")
@@ -81,6 +82,7 @@ def register():
         if form.validate_on_submit():
             form.password.data = sha512(form.password.data.encode()).hexdigest()
             database["user"].insert_one(form.data)
+            flash("User Registered, continue to login")
             return redirect("/login")
 
     return render_template("newreg.html", form=form)
