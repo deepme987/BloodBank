@@ -1,3 +1,4 @@
+
 from flask import Flask, render_template, redirect, url_for, request, flash
 from flask_login import LoginManager, login_user, logout_user, login_required, UserMixin, current_user
 from flask_wtf.csrf import CSRFProtect
@@ -7,7 +8,12 @@ from bson import ObjectId
 from forms import *
 
 try:
+<<<<<<< HEAD:runner.py
     client = MongoClient("mongodb://localhost:27018/")
+=======
+    client = MongoClient("mongodb+srv://Cassie:Cassie@cassie-kdpcc.mongodb.net/"
+                         "test?retryWrites=true&w=majority")
+>>>>>>> 07258c545b3e4c422d4e4f800a8b24e6226048b2:app.py
     database = client["blood_bank"]
 except errors.ServerSelectionTimeoutError:
     print("Cannot connect to mongo server.")
@@ -81,6 +87,7 @@ def register():
         if form.validate_on_submit():
             form.password.data = sha512(form.password.data.encode()).hexdigest()
             database["user"].insert_one(form.data)
+            flash("User Registered, continue to login")
             return redirect("/login")
 
     return render_template("newreg.html", form=form)

@@ -4688,7 +4688,6 @@ var Modal = function ($$$1) {
     // todo (fat): these should probably be refactored out of modal.js
     // ----------------------------------------------------------------------
 
-
     _proto._adjustDialog = function _adjustDialog() {
       var isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight;
 

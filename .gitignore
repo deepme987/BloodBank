@@ -1,6 +1,7 @@
 # Custom Files
 .idea/ 
 .git/
+GitIgnore/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
