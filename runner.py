@@ -7,7 +7,7 @@ from bson import ObjectId
 from forms import *
 
 try:
-    client = MongoClient("mongodb://localhost:27017/")
+    client = MongoClient("mongodb://localhost:27018/")
     database = client["blood_bank"]
 except errors.ServerSelectionTimeoutError:
     print("Cannot connect to mongo server.")
